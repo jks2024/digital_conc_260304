@@ -22,6 +22,8 @@ public class WhileEx1 {
             System.out.println("나이 입력이 잘 못 되었습니다.");
         }
 
+
+
         char gender;
         while (true) {
             System.out.print("성별을 입력 하세요 [M/F] : ");
