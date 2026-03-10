@@ -23,7 +23,11 @@ import java.util.Scanner;
 public class StringEx {
     public static void main(String[] args) {
 
-        stringLowUpperChange();
+        //stringLowUpperChange();
+        //stringAdd();
+        // kmpUpper();
+        // hyPhenNext();
+        splitHyphen();
 
     }
 
@@ -53,10 +57,67 @@ public class StringEx {
 
     }
     static void stringAdd() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("s 문자열 : ");
+        String s = sc.nextLine();
+        System.out.print("k 문자열 : ");
+        String k = sc.nextLine();
+        System.out.print("n : ");
+        int n = sc.nextInt();
+
+        int pos = s.length() - n;  // 문자열 길이 -
+        System.out.println(s.substring(pos) + k);
 
 
     }
-    static void kmp() {
+    // 대문자만 골라내기
+    static void kmpUpper() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("문자열 입력 : ");
+        String str = sc.nextLine();
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i); // 문자열에서 해당 인덱스 문자 추출
+            if (Character.isUpperCase(c)) {
+                System.out.print(c);
+            }
+        }
 
     }
+    // 첫번째 문자 출력, 하이픈 다음 문자 추출
+    static void hyPhenNext() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("문자열 입력 : ");
+        String str = sc.nextLine();
+        for (int i = 0; i < str.length(); i++) {
+            if (i == 0) System.out.print(str.charAt(i)); // 첫번째 문자 출력
+            else {
+                if (str.charAt(i) == '-') System.out.print(str.charAt(i + 1));  // 하이픈 다음 문자 출력
+            }
+        }
+
+    }
+    // 하이픈 기준으로 자르기
+    static void splitHyphen() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("문자열 입력 : ");
+        String str = sc.nextLine();
+        String[] arr = str.split("-");  // 문자열을 하이픈 기준으로 잘라서 부분 문자열로 이루어진 배열 생성
+        for (String s : arr) { //
+            System.out.print(s.charAt(0)); // 하이픈 기준으로 자른 문자열의 0번 인덱스 출력
+        }
+
+    }
+    // 문자 배열로 변환
+    static void charArr() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("문자열 입력 : ");
+        String str = sc.nextLine();
+        char[] chArr = str.toCharArray();  // 문자열을 문자 배열로 변환
+        for (char c : chArr) {
+            if (Character.isUpperCase(c)) System.out.print(c);
+        }
+
+    }
+
+
 }
