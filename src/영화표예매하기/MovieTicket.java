@@ -27,7 +27,7 @@ public class MovieTicket {
     // 좌석 상태 출력
     public void printSeat() {
         for (int e : seat) {
-            System.out.print(e == 0 ? " " : "V");  // 0이면 비어 있음, 1이면 예매됨
+            System.out.print(e == 0 ? "[ ]" : "[V]");  // 0이면 비어 있음, 1이면 예매됨
         }
         System.out.println();
     }
@@ -84,5 +84,4 @@ public class MovieTicket {
         }
         return cnt * price;
     }
-
 }
