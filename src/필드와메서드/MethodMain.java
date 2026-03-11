@@ -8,6 +8,8 @@ package 필드와메서드;
 // - 매개 변수 : 외부에서 해당 메서드레 전달 하는 값 (없을 수도 있음)
 // - 구현분 : 실제 기능 구현 하는 부분 { } 중괄호 블럭으로 표시
 
+import java.util.Scanner;
+
 public class MethodMain {
     public static void main(String[] args) {
         Sample sample = new Sample();  // Sample 클래스로 sample 객체 생성
@@ -40,6 +42,14 @@ public class MethodMain {
             System.out.println(k);
         }
         System.out.println(k);
+
+        // 입력 받은 수소 아닌지 판별하는 메서드 만들기
+        // 소수란? 1과 자기 자신 이외의 수로는 나누어지지 않는 수
+        // "입력 받은 수"는 소수 입니다. "입력 받은 수"는 소수가 아닙니다.
+        Scanner sc = new Scanner(System.in);
+        System.out.print("소수 판별 정수 입력 : ");
+        int num = sc.nextInt();
+        System.out.printf("입력 받은 %d는 %s\n", num, (sample.isPrime(num) ? "소수" : "소수 아님"));
 
 
     }
@@ -102,4 +112,12 @@ class Sample {
         return  x + y;
     }
 
+    // 소수이면 ture, 소가 아니면 false
+    boolean isPrime(int num) {
+        if (num <= 1) return false;  // 소수가 아님
+        for (int i = 2; i < num; i++) {
+            if (num % i == 0) return false; // 1과 자기 자신의외에 수로 나누어지면 소수가 아님
+        }
+        return true;  // 나누어 지지 않은 경우이기 때문에 소수 임
+    }
 }
