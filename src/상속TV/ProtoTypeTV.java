@@ -3,11 +3,11 @@ package 상속TV;
 // 상속을 주기 위한 TV 만들기
 public class ProtoTypeTV {
     // 전원
-    boolean power;
+    protected boolean power;
     // 채널
-    int channel;
+    protected int channel;
     // 볼륨
-    int volume;
+    protected int volume;
 
     // 매개변수가 없는 생성자
     ProtoTypeTV() {
@@ -30,6 +30,10 @@ public class ProtoTypeTV {
         } else {
             System.out.println("채널 설정이 잘 못 되었습니다.");
         }
+    }
+
+    void setVolume(int vol) {
+        this.volume = vol;
     }
 
     // 전원을 켜고 끄는 기능 만들기
