@@ -39,6 +39,7 @@ public class ProtoTypeTV {
     // 전원을 켜고 끄는 기능 만들기
     void setPower(boolean on) {
         this.power = on;
+        System.out.println("전원을 " + (on ? "ON" : "OFF") + "했습니다.");
     }
 
 }

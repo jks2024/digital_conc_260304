@@ -20,7 +20,8 @@ public class ProductTV extends ProtoTypeTV {
     @Override
     void setVolume(int vol) {
         if (vol >= 0 && vol <= 100) {
-            setVolume(vol);
+            volume = vol;
+            System.out.println("볼륨을 " + vol + "로 변경 했습니다.");
         } else {
             System.out.println("볼륨 설정 범위를 벗어났습니다.");
         }
@@ -30,7 +31,8 @@ public class ProductTV extends ProtoTypeTV {
     @Override
     void setChannel(int cnl) {
         if (cnl >= 1 && cnl <= 1999) {
-            setChannel(cnl);
+            channel = cnl;
+            System.out.println("채널을 " + cnl + "로 변경 했습니다.");
         } else {
             System.out.println("채널 설정 범위를 벗어 났습니다.");
         }
@@ -38,11 +40,22 @@ public class ProductTV extends ProtoTypeTV {
 
     // 오버라이딩된  설정 기능을 오버로딩해서 스마트 모드 추가
     // 스마트 기능을 켜면 인터넷 기능이 켜지고 채널 설정은 무시 됨
-
-
+    void setChannel(int cnl, boolean smart) {
+        if (smart) {
+            isSmart = true;
+        } else {
+            setChannel(cnl);
+        }
+    }
 
     // 티비 정보 출력 기능
-
-
+    void printTV() {
+        System.out.println("====== TV 정보 출력 =====");
+        System.out.println("이름 : " + name);
+        System.out.println("전원 : " + (power ? "ON" : "OFF"));
+        System.out.println("채널 : " + channel);
+        System.out.println("볼륨 : " + volume);
+        System.out.println("스마트 모드 : " + (isSmart ? "ON" : "OFF"));
+    }
 }
 
