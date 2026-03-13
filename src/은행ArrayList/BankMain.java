@@ -10,13 +10,14 @@ public class BankMain {
 
         while (true) {
             System.out.println("=".repeat(32));
-            System.out.println("[1]계좌개설 [2]계좌선택 [3]전제조회 [4]계좌수 [5]종료 : ");
+            System.out.print("[1]계좌개설 [2]계좌선택 [3]전제조회 [4]계좌수 [5]종료 : ");
             int menu = sc.nextInt();
 
             switch (menu) {
                 case 1:
                     System.out.print("은행명 입력 : ");
                     String bankName = sc.next();
+                    sc.nextLine();  // 버퍼 비우기
                     System.out.print("예금주 입력 : ");
                     String name = sc.next();
                     System.out.print("초기 입금액 : ");
@@ -39,8 +40,56 @@ public class BankMain {
                             break;
                         }
                     }
-                    selectedBank.printAccount();
+                    while (true) {
+                        System.out.print("[1]입금 [2]출금 [3]잔액 [4]이전 메뉴 : ");
+                        int subMenu = sc.nextInt();
+                        switch (subMenu) {
+                            case 1:
+                                System.out.print("입금 금액 입력 : ");
+                                int deposit = sc.nextInt();
+                                if (selectedBank != null) {
+                                    selectedBank.deposit(deposit);
+                                } else {
+                                    System.out.println("입금 계좌가 없습니다.");
+                                }
+                                break;
+                            case 2:
+                                System.out.print("출금 금액 입력 : ");
+                                int withDraw = sc.nextInt();
+                                if (selectedBank != null) {
+                                    selectedBank.withdraw(withDraw);
+                                } else {
+                                    System.out.println("출금 계좌가 없습니다.");
+                                }
+                                break;
+                            case 3:
+                                if (selectedBank != null) {
+                                    selectedBank.printAccount();
+                                } else {
+                                    System.out.println("잔액 조회 할 계좌가 없습니다.");
+                                }
+                                break;
+                            case 4:
+                                break;
+                        }
+                        if (subMenu == 4) break;
+                    }
                     break;
+                case 3:
+                    for (NewBank bank : bankList) {
+                        bank.printAccount();
+                        System.out.println("-".repeat(32));
+                    }
+                    break;
+                case 4:
+                    System.out.println("계좌 생성 개수 : " + NewBank.getCount());
+                    break;
+                case 5:
+                    System.out.println("프로그램을 종료 합니다.");
+                    sc.close();
+                    return;
+                default:
+                    System.out.println("잘 못된 메뉴입니다.");
             }
 
         }
