@@ -11,7 +11,7 @@ public class AirConMain {
         String onOff = sc.nextLine();
 
         if (onOff.equalsIgnoreCase("yes")) {
-            myAirCon.power = true; // 원래는 게터를 사용하는게 원칙
+            myAirCon.setPower(true); // 원래는 게터를 사용하는게 원칙
             myAirCon.setAirCon(sc);
             myAirCon.operate();
         } else {

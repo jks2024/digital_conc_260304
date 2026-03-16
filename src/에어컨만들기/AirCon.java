@@ -17,12 +17,12 @@ import java.util.Scanner;
 import static java.lang.Thread.sleep;
 
 public class AirCon {
-    boolean power;  // 전원 : ON/OFF
-    int tempSet;    // 온도 설정
-    int tempNow;    // 현재 온도 표시
-    boolean cooler; // ON/OFF
-    boolean heater; // ON/OFF
-    int wind;       // 1/2/3
+    private boolean power;  // 전원 : ON/OFF
+    private int tempSet;    // 온도 설정
+    private int tempNow;    // 현재 온도 표시
+    private boolean cooler; // ON/OFF
+    private boolean heater; // ON/OFF
+    private int wind;       // 1/2/3
 
     public AirCon() {
         final int[] monthTempArr = {-5, 3, 10, 15, 22, 28, 32, 30, 24, 16, 8, 4};
@@ -39,7 +39,7 @@ public class AirCon {
     public void printAirCon() {
         final String[] step = {"", "1단계", "2단계", "3단계"};
         System.out.println("======= 에어컨 정보 =======");
-        System.out.println("전원 " + (power ? "ON" : "OFF") );
+        System.out.println("전원 : " + (power ? "ON" : "OFF") );
         System.out.println("현재 온도 : " + tempNow);
         System.out.println("설정 온도 : " + tempSet);
         System.out.println("냉방 모드 : " + (cooler ? "ON" : "OFF"));
@@ -105,6 +105,13 @@ public class AirCon {
         }
     }
 
+    public boolean isPower() {
+        return power;
+    }
+
+    public void setPower(boolean power) {
+        this.power = power;
+    }
 
     // 현재 온도 변경 메서드
     private void setTempNow(int temp) {
