@@ -12,6 +12,7 @@ package 에어컨만들기;
 // 예어컨의 전체 정보 상태를 보여는 메서드 만들기
 
 import java.util.Calendar;
+import java.util.Scanner;
 
 import static java.lang.Thread.sleep;
 
@@ -64,19 +65,46 @@ public class AirCon {
                     changedTemp = true;
                 }
 
-                if (changedTemp) {  // 온도를 변경해야 할 조건
+                if (changedTemp) {  // 온도를 변경해야 할 조건, 1단 60, 2단 30, 3단 20초
                     if (cooler) setTempNow(-1);
                     if (heater) setTempNow(1);
-                    printAirCon();
+                    printAirCon();  // 현재 에어컨 상태를 출력
                     elapsedTime = 0;  // 경과 시간을 초기화
                     changedTemp = false; // 온도 변경 조건을 false로 변경
+                }
+                if (tempNow == tempSet) { // 현재 온도와 설정 온도가 같은 경우
+                    System.out.println("\n설정 온도에 도달하여 에어컨 작동을 종료 합니다.");
+                    power = false;
+                    break;
                 }
             }
 
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+            Thread.currentThread().interrupt();  // sleep() 에 대한 예외 처리
         }
     }
+    // 에어컨 설정
+    public void setAirCon(Scanner sc) { // 스캐너 객체를 전달 받음
+        System.out.println("현재온도는 " + tempNow + "도 입니다.");
+        System.out.print("온도 설정 : ");
+        tempSet = sc.nextInt();
+        System.out.print("바람 세기 : ");
+        wind = sc.nextInt();
+
+        if (tempNow > tempSet) {  // 온도를 내려야 하는 경우
+            System.out.println("Cooler가 동작 합니다.");
+            cooler = true;
+            heater = false;
+        } else if (tempNow < tempSet) {
+            System.out.println("Heater가 동작 합니다.");
+            heater = true;
+            cooler = false;
+        } else {
+            cooler = false;
+            heater = false;
+        }
+    }
+
 
     // 현재 온도 변경 메서드
     private void setTempNow(int temp) {
