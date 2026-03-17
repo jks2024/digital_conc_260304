@@ -43,7 +43,7 @@ public class CarMain {
         // 자동차 객체 대입
         switch (type) {
             case 1: car = new SportCar("람로르기니"); break;
-            case 2: car = new SportCar("G80"); break;
+            case 2: car = new Sedan("G80"); break;
             case 3: car = new Bus("리무진 버스"); break;
             default: System.out.println("없는 차량 입니다.");
         }
