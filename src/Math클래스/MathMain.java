@@ -46,6 +46,21 @@ public class MathMain {
         // 1. 일주일 기온 데이터 출력 (1일 ~ 7일)
         // 2. 최저기온, 최고기온, 일교차 출력 하기
         int[] temps = {-5, 3, -12, 7, -1, 15, -8};
+        System.out.println("===== 일주일 기농 분석 ====");
+        int min = temps[0], max = temps[0];
+        for (int i = 1; i < temps.length; i++) {
+            System.out.printf("%d 일 : %d 도\n", i + 1, temps[i]);
+            if (temps[i] < min) min = temps[i];
+            if (temps[i] > max) max = temps[i];
+        }
+
+        System.out.println();
+        System.out.println("촤저 기온 : " + min);
+        System.out.println("최고 기온 : " + max);
+        System.out.println("일교차 : " + Math.abs(min - max));
+
+
+
 
 
     }
