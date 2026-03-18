@@ -9,4 +9,14 @@ public class Bus extends Car {
     void setMode(boolean isMode) {
         if (isMode) fuelTank += 30;
     }
+
+    @Override
+    void applyOptions() {
+
+    }
+
+    @Override
+    void printOptions() {
+
+    }
 }
