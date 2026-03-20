@@ -39,7 +39,7 @@ public class MenuService {
     }
 
     // 메뉴 삭제
-    public boolean deleteMenu(int index, CoffeeMenu menu) {
+    public boolean deleteMenu(int index) {
         if (index >= 0 && index < menuList.size()) {
             menuList.remove(index);
             return true;
