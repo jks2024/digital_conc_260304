@@ -13,13 +13,13 @@ public class MenuMain {
             System.out.println("[1]조회 [2]등록 [3]수정 [4]삭제 [5]검색 [6]종료 : ");
             System.out.print("메뉴 선택 : ");
             int menu = sc.nextInt();
-
+            sc.nextLine();
             switch (menu) {
                 case 1: printMenuList(service.getMenuList()); break;
                 case 2: service.addMenu(inputMenu()); break;
-                case 3:
-                case 4:
-                case 5:
+                case 3: updateMenu(); break;
+                case 4: deleteMenu(); break;
+                case 5: searchMenu(); break;
                 case 6: System.out.println("커피 메뉴를 종료 합니다."); return;
 
             }
@@ -54,6 +54,7 @@ public class MenuMain {
         printMenuList(service.getMenuList());
         System.out.print("수정 할 번호 : ");
         int index = sc.nextInt() - 1;
+        sc.nextLine();
         if (service.updateMenu(index, inputMenu())) System.out.print("수정 완료");
         else System.out.println("수정 실패 : 번호 확인 필요");
     }
