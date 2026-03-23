@@ -21,7 +21,6 @@ public class MenuMain {
                 case 4: deleteMenu(); break;
                 case 5: searchMenu(); break;
                 case 6: System.out.println("커피 메뉴를 종료 합니다."); return;
-
             }
         }
     }
