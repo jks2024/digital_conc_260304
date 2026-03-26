@@ -29,6 +29,26 @@ public class BankMain {
                     } catch (InvalidAmountException e) {
                         System.out.println(e.getMessage());
                     }
+                    break;
+                case 2:
+                    System.out.print("출금 : ");
+                    int with = sc.nextInt();
+                    try {
+                        account.withdraw(with);
+                    } catch (InvalidAmountException e) {
+                        System.out.println(e.getMessage());
+                    } catch (InsufficientBalanceException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                case 3:
+                    System.out.println(account.getBalance());
+                    break;
+                case 0:
+                    System.out.println("프로그램 종료");
+                    return;
+                default:
+                    System.out.println("메뉴 선택이 잘 못 되었습니다.");
 
             }
 
