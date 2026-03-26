@@ -11,7 +11,6 @@ public class ThreadMain {
         ThreadB threadB = new ThreadB(workObject);
         threadA.start();
         threadB.start();
-
     }
 }
 
